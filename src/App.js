@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ViewReports from "./pages/ViewReports";
+import CreateReport from "./pages/CreateReport";
+import ViewSingleReport from "./pages/ViewSingleReport";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        {/* Навигация */}
+        <nav className="bg-white p-4 shadow">
+          <ul className="flex space-x-4">
+            <li>
+              <Link to="/view-reports" className="text-blue-500 hover:text-blue-700">
+                Просмотр отчётов
+              </Link>
+            </li>
+            <li>
+              <Link to="/create-report" className="text-blue-500 hover:text-blue-700">
+                Создать отчёт
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Маршруты */}
+        <main className="container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<ViewReports />} />
+            <Route path="/view-reports" element={<ViewReports />} />
+            <Route path="/view-reports/:id" element={<ViewSingleReport />} />
+            <Route path="/create-report" element={<CreateReport />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
