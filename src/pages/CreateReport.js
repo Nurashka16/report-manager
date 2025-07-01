@@ -81,7 +81,6 @@ const CreateReport = () => {
       <div className="mt-8">
         <h2 className="text-xl font-bold mt-14 mb-6">Структура базы данных</h2>
         <div className="flex justify-between items-center">
-          {/* Таблица Trip */}
           <div className="bg-white shadow overflow-hidden sm:rounded-lg w-full max-w-sm ">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Trip</h3>
@@ -159,8 +158,6 @@ const CreateReport = () => {
               </div>
             </div>
           </div>
-
-          {/* Связь между Trip и Pass_in_trip */}
 <div className="flex items-center mx-4 w-32 self-center">
   <div className="text-gray-500 text-sm mr-2">1</div>
   <div className="relative flex-grow h-0.5 bg-gray-400">
@@ -168,8 +165,6 @@ const CreateReport = () => {
   </div>
   <div className="text-gray-500 text-sm ml-2">∞</div>
 </div>
-
-          {/* Таблица Pass_in_trip */}
           <div className="bg-white shadow overflow-hidden sm:rounded-lg w-full max-w-sm">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Pass_in_trip</h3>
@@ -223,8 +218,6 @@ const CreateReport = () => {
               </div>
             </div>
           </div>
-
-          {/* Связь между Pass_in_trip и Passenger */}
 <div className="flex items-center mx-4 w-32 self-center">
   <div className="text-gray-500 text-sm mr-2">1</div>
   <div className="relative flex-grow h-0.5 bg-gray-400">
@@ -232,8 +225,6 @@ const CreateReport = () => {
   </div>
   <div className="text-gray-500 text-sm ml-2">∞</div>
 </div>
-
-          {/* Таблица Passenger */}
           <div className="bg-white shadow overflow-hidden sm:rounded-lg w-full max-w-sm">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Passenger</h3>
