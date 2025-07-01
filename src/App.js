@@ -2,14 +2,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ViewReports from "./pages/ViewReports";
-import CreateReport from "./pages/CreateReport";
+import CreateReport from "./pages/CreateReport/CreateReport";
+import EditReport from "./pages/EditReport"; // новая страница
 import ViewSingleReport from "./pages/ViewSingleReport";
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        {/* Навигация */}
         <nav className="bg-white p-4 shadow">
           <ul className="flex space-x-4">
             <li>
@@ -25,13 +25,13 @@ function App() {
           </ul>
         </nav>
 
-        {/* Маршруты */}
         <main className="container mx-auto p-4">
           <Routes>
             <Route path="/" element={<ViewReports />} />
             <Route path="/view-reports" element={<ViewReports />} />
             <Route path="/view-reports/:id" element={<ViewSingleReport />} />
             <Route path="/create-report" element={<CreateReport />} />
+            <Route path="/edit-report/:id" element={<EditReport />} /> {/* маршрут для редактирования */}
           </Routes>
         </main>
       </div>
