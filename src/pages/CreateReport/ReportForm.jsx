@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DatabaseSchema from './DatabaseSchema';
 
 const ReportForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
@@ -66,7 +67,7 @@ const ReportForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-16 mb-4">
+   <div> <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-16 mb-4">
       {/* Наименование */}
       <div className="mb-4">
         <label htmlFor="title" className="block text-gray-700 font-bold mb-2">
@@ -142,7 +143,7 @@ const ReportForm = ({ onSubmit }) => {
 
       {loading && <p className="mt-4 text-gray-500">Идёт генерация таблицы...</p>}
       {error && <p className="mt-4 text-red-500">{error}</p>}
-    </form>
+    </form><DatabaseSchema/></div>
   );
 };
 
