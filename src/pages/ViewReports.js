@@ -1,4 +1,3 @@
-// src/pages/ViewReports.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getReports, deleteReport } from "../utils/localStorage";
@@ -57,7 +56,7 @@ const ViewReports = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="border rounded p-2"
+            className="border rounded p-2 select-style"
           >
             <option value="">Все статусы</option>
             {uniqueStatuses.map((status, index) => (
@@ -69,14 +68,14 @@ const ViewReports = () => {
           <select
             value={sortByDate}
             onChange={(e) => setSortByDate(e.target.value)}
-            className="border rounded p-2"
+            className="border rounded p-2 select-style"
           >
             <option value="desc">Сначала новые</option>
             <option value="asc">Сначала старые</option>
           </select>
           <Link
             to="/create-report"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 create-button"
           >
             Создать отчёт
           </Link>
@@ -100,7 +99,10 @@ const ViewReports = () => {
           <tbody>
             {filteredReports.length > 0 ? (
               filteredReports.map((report) => (
-                <tr key={report.id} className="hover:bg-gray-50 transition-colors">
+                <tr
+                  key={report.id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
                   <td className="p-3 border-b">
                     <Link
                       to={`/view-reports/${report.id}`}
@@ -109,7 +111,7 @@ const ViewReports = () => {
                       {report.id}
                     </Link>
                   </td>
-                  <td className="p-3 border-b">{report.name}</td>
+                  <td className="p-3 border-b">{report.title}</td>
                   <td className="p-3 border-b">
                     <div className="line-clamp-2">{report.description}</div>
                   </td>

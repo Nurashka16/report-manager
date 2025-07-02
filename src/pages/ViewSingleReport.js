@@ -1,10 +1,22 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import reportsData from '../asserts/data.json';
 
 const ViewSingleReport = () => {
   const { id } = useParams();
-  const report = reportsData.find(report => report.id === parseInt(id));
+  console.log('Received ID:', id);
+
+  // Получаем данные из localStorage
+  const reportsData = JSON.parse(localStorage.getItem('reports') || '[]');
+
+  // Преобразуем id в число
+  const parsedId = parseInt(id);
+  if (isNaN(parsedId)) {
+    return <div className="p-4 text-red-500">Некорректный идентификатор отчета</div>;
+  }
+
+  // Находим отчет по id
+  const report = reportsData.find(report => report.id === parsedId);
+  console.log('Found Report:', report);
 
   if (!report) {
     return <div className="p-4 text-red-500">Отчёт не найден</div>;
@@ -13,11 +25,11 @@ const ViewSingleReport = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Просмотр отчёта</h1>
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">{report.title || 'Названия самолётов'}</h2>
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">{report.title || 'Без названия'}</h2> {/* Отображаем название */}
       <div className="mb-8">
         <h3 className="text-xl font-medium text-gray-700 mb-3">Описание</h3>
         <ul className="list-disc pl-5 space-y-2 text-gray-600">
-          <li>{report.description || 'Названия всех имеющихся самолётов'}</li>
+          <li>{report.description || 'Описание отсутствует'}</li>
         </ul>
       </div>
       <div className="mb-8 bg-gray-100 p-4 rounded-md">
@@ -30,11 +42,11 @@ const ViewSingleReport = () => {
       <hr className="border-t-2 border-gray-300 my-6" />
       <div className="flex justify-between items-center mb-8">
         <div>
-          <p className="text-gray-700"><strong>Статус:</strong> <span className="text-green-600">Готов</span></p>
-          <p className="text-gray-700"><strong>Дата создания:</strong> 04.06.2025</p>
+          <p className="text-gray-700"><strong>Статус:</strong> <span className="text-green-600">{report.status || 'Неизвестен'}</span></p>
+          <p className="text-gray-700"><strong>Дата создания:</strong> {new Date(report.createdAt).toLocaleDateString()}</p>
         </div>
         <div>
-          <p className="text-gray-700"><strong>Автор:</strong> Молчанов Д.Д.</p>
+          <p className="text-gray-700"><strong>Автор:</strong> {report.author || '-'}</p>
         </div>
       </div>
       <div className="text-center">

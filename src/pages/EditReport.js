@@ -1,4 +1,3 @@
-// src/pages/EditReport.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getReports, updateReport } from "../utils/localStorage";
@@ -8,7 +7,7 @@ const EditReport = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
+    title: "",
     description: "",
     author: "",
     status: "",
@@ -44,39 +43,42 @@ const EditReport = () => {
           <label className="block mb-1">Наименование:</label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
+            name="title"
+            value={formData.title || ""} // безопасный вывод
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
           />
         </div>
+
         <div>
           <label className="block mb-1">Описание:</label>
           <textarea
             name="description"
-            value={formData.description}
+            value={formData.description || ""}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
           />
         </div>
+
         <div>
           <label className="block mb-1">Автор:</label>
           <input
             type="text"
             name="author"
-            value={formData.author}
+            value={formData.author || ""}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
           />
         </div>
+
         <div>
           <label className="block mb-1">Статус:</label>
           <select
             name="status"
-            value={formData.status}
+            value={formData.status || ""}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
@@ -87,17 +89,19 @@ const EditReport = () => {
             <option value="Одобрен">Одобрен</option>
           </select>
         </div>
+
         <div>
           <label className="block mb-1">Дата создания:</label>
           <input
             type="date"
             name="createdAt"
-            value={formData.createdAt.split("T")[0]}
+            value={formData.createdAt ? formData.createdAt.split("T")[0] : ""}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
           />
         </div>
+
         <div className="flex space-x-2">
           <button
             type="submit"

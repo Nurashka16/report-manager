@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+/* Стили для select */
+.select-style {
+  padding-right: 30px; /* Отступ для стрелки */
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>"); /* Кастомная стрелка */
+  background-position: right 10px center; /* Позиция стрелки */
+  background-repeat: no-repeat; /* Не повторять фон */
+  appearance: none; /* Убираем стандартные стили браузера */
+  -webkit-appearance: none; /* Для Chrome, Safari */
+  -moz-appearance: none; /* Для Firefox */
+}
+
+/* Стили для кнопки "Создать отчёт" */
+.create-button {
+  padding: 10px 20px; /* Большие отступы */
+  font-size: 16px; /* Более крупный шрифт */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+  transition: all 0.3s ease; /* Анимация при наведении */
+}
+
+.create-button:hover {
+  transform: translateY(-2px); /* Легкое движение при наведении */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Сильнее тень */
+}
