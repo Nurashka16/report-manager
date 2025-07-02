@@ -1,12 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReportForm from './ReportForm';
-import DatabaseSchema from './DatabaseSchema'; // Компонент для отображения таблицы
 
 const CreateReport = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = async (formData) => {
+  const handleSubmit = (formData) => {
     try {
       const reports = JSON.parse(localStorage.getItem('reports') || '[]');
       const newId = Date.now();
@@ -30,7 +28,6 @@ const CreateReport = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Создание отчёта</h1>
-      <ReportForm onSubmit={handleSubmit} />
     </div>
   );
 };

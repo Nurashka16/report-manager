@@ -1,23 +1,18 @@
-// src/utils/localStorage.js
-const REPORTS_KEY = 'reports';
-
 export const getReports = () => {
-  const data = localStorage.getItem(REPORTS_KEY);
-  return data ? JSON.parse(data) : [];
-};
-
-export const saveReports = (reports) => {
-  localStorage.setItem(REPORTS_KEY, JSON.stringify(reports));
-};
-
-export const deleteReport = (id) => {
-  const reports = getReports().filter(r => r.id !== id);
-  saveReports(reports);
+  const reports = localStorage.getItem("reports");
+  return reports ? JSON.parse(reports) : [];
 };
 
 export const updateReport = (updatedReport) => {
-  const reports = getReports().map(r =>
+  const reports = getReports();
+  const updated = reports.map((r) =>
     r.id === updatedReport.id ? updatedReport : r
   );
-  saveReports(reports);
+  localStorage.setItem("reports", JSON.stringify(updated));
+};
+
+export const deleteReport = (id) => {
+  const reports = getReports();
+  const filtered = reports.filter((r) => r.id !== id);
+  localStorage.setItem("reports", JSON.stringify(filtered));
 };

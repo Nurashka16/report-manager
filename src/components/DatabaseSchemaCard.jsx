@@ -1,9 +1,8 @@
-// src/components/DatabaseSchemaCard.jsx
-import React from "react";
+import React from 'react';
 
-export default function DatabaseSchemaCard({ name, fields }) {
+const DatabaseSchemaCard = ({ name, fields }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
+    <div className="bg-white shadow rounded-lg p-4 mb-4">
       <h3 className="text-lg font-semibold">{name}</h3>
       <table className="min-w-full divide-y divide-gray-200 mt-2">
         <thead className="bg-gray-50">
@@ -23,4 +22,6 @@ export default function DatabaseSchemaCard({ name, fields }) {
       </table>
     </div>
   );
-}
+};
+
+export default DatabaseSchemaCard;

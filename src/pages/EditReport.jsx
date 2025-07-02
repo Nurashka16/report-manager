@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getReports, updateReport } from "../utils/localStorage";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getReports, updateReport } from '../utils/localStorage';
 
 const EditReport = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    author: "",
-    status: "",
-    createdAt: "",
+    title: '',
+    description: '',
+    author: '',
+    status: '',
+    createdAt: '',
   });
 
   useEffect(() => {
     const reports = getReports();
-    const currentReport = reports.find((r) => r.id === parseInt(id));
-    if (currentReport) {
-      setFormData(currentReport);
+    const current = reports.find((r) => r.id === parseInt(id));
+    if (current) {
+      setFormData(current);
     }
   }, [id]);
 
@@ -32,7 +32,7 @@ const EditReport = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateReport(formData);
-    navigate("/view-reports");
+    navigate('/view-reports');
   };
 
   return (
@@ -44,7 +44,7 @@ const EditReport = () => {
           <input
             type="text"
             name="title"
-            value={formData.title || ""} // безопасный вывод
+            value={formData.title}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
@@ -55,7 +55,7 @@ const EditReport = () => {
           <label className="block mb-1">Описание:</label>
           <textarea
             name="description"
-            value={formData.description || ""}
+            value={formData.description}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
@@ -67,7 +67,7 @@ const EditReport = () => {
           <input
             type="text"
             name="author"
-            value={formData.author || ""}
+            value={formData.author}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
@@ -78,7 +78,7 @@ const EditReport = () => {
           <label className="block mb-1">Статус:</label>
           <select
             name="status"
-            value={formData.status || ""}
+            value={formData.status}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"
@@ -95,7 +95,7 @@ const EditReport = () => {
           <input
             type="date"
             name="createdAt"
-            value={formData.createdAt ? formData.createdAt.split("T")[0] : ""}
+            value={formData.createdAt?.split('T')[0]}
             onChange={handleChange}
             required
             className="w-full border p-2 rounded"

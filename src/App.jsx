@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // ✅ Импортируем useState
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ViewReports from './pages/ViewReports';
 import CreateReport from './pages/CreateReport/CreateReport';
@@ -17,7 +17,11 @@ function AppContent() {
             <Link
               to="/view-reports"
               onClick={() => setActiveRoute("/view-reports")}
-              className={activeRoute === "/view-reports" ? "text-gray-800 font-bold bg-gray-200 px-2 py-1 rounded" : "text-blue-500 hover:text-blue-700"}
+              className={`px-2 py-1 rounded transition-colors ${
+                activeRoute === "/view-reports"
+                  ? "text-gray-800 font-bold bg-gray-200"
+                  : "text-blue-500 hover:text-blue-700"
+              }`}
             >
               Просмотр отчётов
             </Link>
@@ -26,7 +30,11 @@ function AppContent() {
             <Link
               to="/create-report"
               onClick={() => setActiveRoute("/create-report")}
-              className={activeRoute === "/create-report" ? "text-gray-800 font-bold bg-gray-200 px-2 py-1 rounded" : "text-blue-500 hover:text-blue-700"}
+              className={`px-2 py-1 rounded transition-colors ${
+                activeRoute === "/create-report"
+                  ? "text-gray-800 font-bold bg-gray-200"
+                  : "text-blue-500 hover:text-blue-700"
+              }`}
             >
               Создать отчёт
             </Link>
